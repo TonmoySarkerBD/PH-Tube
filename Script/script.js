@@ -72,7 +72,7 @@ function displayVideos(videos){
         // console.log(video);
         const vidCard =document.createElement("div");
         vidCard.innerHTML =`
-         <div class="card bg-base-100">
+         <div class="card bg-base-100" onclick=loadVideoDetails('${video.video_id}')>
                 <figure class="relative">
                   <img class="w-full h-[150px] object-cover"
                     src="${video.thumbnail}"
@@ -91,7 +91,10 @@ function displayVideos(videos){
                     </div>
                     <div class="intro">
                         <h2 class="text-sm font-semibold">${video.title}</h2>
-                        <p class="text-sm text-gray-400 flex gap-1">${video.authors[0].profile_name} <img class="w-5 h-5" src="https://img.icons8.com/?size=48&id=98A4yZTt9abw&format=png" alt=""></p>
+                        <p class="text-sm text-gray-400 flex gap-1">
+                        ${video.authors[0].profile_name} 
+                        ${video.authors[0].verified == true ? `<img class="w-5 h-5" src="https://img.icons8.com/?size=48&id=98A4yZTt9abw&format=png" alt="">`: ``} 
+                        </p>
                         <p class="text-sm text-gray-400">${video.others.views}</p>
                     </div>
                   </div>
@@ -100,6 +103,24 @@ function displayVideos(videos){
         `;
         vidContainer.append(vidCard);
     });
+}
+
+function loadVideoDetails(videoID){
+    console.log(videoID);
+    const url =`https://openapi.programming-hero.com/api/phero-tube/video/${videoID}`;
+    fetch(url)
+    .then((res)=> res.json())
+    .then((data) => displayVideoDetails(data.video))
+}
+
+function displayVideoDetails(video){
+
+    document.getElementById("video_modal").showModal();
+    const detailsContainer = document.getElementById("details-container");
+    detailsContainer.innerHTML = `
+    <h2>${video.title}</h2>
+    `;
+
 }
 
 

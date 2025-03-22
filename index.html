@@ -24,14 +24,22 @@
     <header>
         <nav class="w-11/12 mx-auto flex justify-between border-b-2 py-5 border-[#17171720]">
             <div class="logo"><img class="w-[120px]" src="./design/Logo.png" alt="PH Tube"></div>
-            <div class="sort"><button class="btn">Sort By View</button></div>
+            <div class="sort flex gap-2">
+                <button class="btn">Sort By View</button>
+                <label class="input">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
+                    <input type="search" required placeholder="Search"/>
+                  </label>
+            
+            </div>
             <div class="blog"><button class="btn bg-[#FF1F3D] text-white">Blogs</button></div>
         </nav>
     </header>
 
     <main>
         <nav id="Category-container" class="flex py-5 justify-center ">
-            <button onclick="loadVideos()" id="btn-all" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">All</button>
+            <button onclick="loadVideos()" id="btn-all"
+                class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">All</button>
 
         </nav>
 
@@ -44,6 +52,19 @@
             </div>
 
         </Section>
+        <dialog id="video_modal" class="modal">
+            <div class="modal-box">
+                <div id="details-container">
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
 
     </main>
     <script src="./Script/script.js"></script>
