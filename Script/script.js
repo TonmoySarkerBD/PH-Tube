@@ -8,6 +8,13 @@ function loadCatagory() {
         .then((data) => displayCategories(data.categories));
 }
 
+function loadCatagoryVideos(id){
+    const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
+    fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayVideos(data.category));
+}
+
 function loadVideos(){
     fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
     .then((res) => res.json())
@@ -21,14 +28,16 @@ function displayCategories(categories) {
     for( let cat  of categories){
         const catDiv = document.createElement("div");
         catDiv.innerHTML = `
-        <button class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
+        <button onclick="loadCatagoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
         `;
         catContainer.append(catDiv)
     }
 }
 
 function displayVideos(videos){
-    vidContainer = document.getElementById("vid-container");
+    const vidContainer = document.getElementById("vid-container");
+    vidContainer.innerHTML= ``;
+
     videos.forEach(video => {
         // console.log(video);
         const vidCard =document.createElement("div");
@@ -65,4 +74,3 @@ function displayVideos(videos){
 
 
 loadCatagory();
-loadVideos();
