@@ -31,8 +31,8 @@ function loadCatagoryVideos(id){
     });
 }
 
-function loadVideos(){
-    fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+function loadVideos(stext = ""){
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${stext}`)
     .then((res) => res.json())
     .then((data) => {
         removeActive();
@@ -123,5 +123,9 @@ function displayVideoDetails(video){
 
 }
 
-
+document.getElementById('search-input').addEventListener("keyup" , (e)=>{
+    const input = e.target.value;
+    console.log(input);
+    loadVideos(input);
+})
 loadCatagory();
