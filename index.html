@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,16 @@
     <!-- Daisy Ui + Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Custom Css -->
+    <style>
+        .active {
+            background-color: #FF1F3D;
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <nav class="w-11/12 mx-auto flex justify-between border-b-2 py-5 border-[#17171720]">
@@ -21,15 +31,22 @@
 
     <main>
         <nav id="Category-container" class="flex py-5 justify-center ">
-            <button onclick="loadVideos()" class="btn btn-sm bg-[#FF1F3D] text-white">All</button>
+            <button onclick="loadVideos()" id="btn-all" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">All</button>
 
         </nav>
 
         <Section id="vid-container" class="w-11/12 mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+
+
+            <div class="col-span-full flex flex-col items-center justify-center py-20">
+                <img src="./design/Icon.png" alt="">
+                <h2 class="text-2xl font-bold">Oops!! Sorry, There is no content here</h2>
+            </div>
 
         </Section>
 
     </main>
     <script src="./Script/script.js"></script>
 </body>
+
 </html>
